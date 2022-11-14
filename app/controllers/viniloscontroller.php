@@ -22,7 +22,9 @@ include_once '.\app\views\vinilosview.php';
             $params = [
                 "field" => "id",
                 "order" => "asc",
-                "genero" => "vinilos.generosfk"
+                "genero" => "vinilos.generosfk",
+                "limit" => "18446744073709551610",
+                "offset" => "0"
             ];
             if(isset($_GET["field"])) {
                 $params["field"] = $_GET["field"];
@@ -32,6 +34,12 @@ include_once '.\app\views\vinilosview.php';
             }  
             if(isset($_GET["genero"]) ) {
                 $params["genero"] = $_GET["genero"];
+            }  
+            if(isset($_GET["limit"]) ) {
+                $params["limit"] = $_GET["limit"]; 
+            if(isset($_GET["offset"]) ) {
+                $params["offset"] = ($_GET['offset']-1)*$params["limit"];
+                }  
             }  
         $vinilos = $this->model->getVinilos($params);
         $this->view->response($vinilos);
@@ -47,6 +55,7 @@ include_once '.\app\views\vinilosview.php';
         else 
             $this->view->response("El vinilo con el id=$id no existe", 404);
     }
+    
     function setVinilos($params = null) {
         $vinilos = $this->getData();
 

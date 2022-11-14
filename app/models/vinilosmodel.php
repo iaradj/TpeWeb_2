@@ -14,7 +14,9 @@
                                         INNER JOIN generos 
                                         on vinilos.generosfk = generos.id_g
                                         WHERE vinilos.generosfk = $params[genero]
-                                        ORDER BY $params[field] $params[order]");
+                                        ORDER BY $params[field] $params[order]
+                                        LIMIT $params[limit] 
+                                        OFFSET $params[offset]");
             $query->execute();
             return $vinilos = $query->fetchAll(PDO::FETCH_OBJ);
         }
