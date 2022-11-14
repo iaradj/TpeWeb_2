@@ -19,16 +19,25 @@ include_once '.\app\views\vinilosview.php';
         }
 
         function getVinilos($params = null){
-        $vinilos = $this->model->getVinilos();
+            $params = [
+                "field" => "id",
+                "order" => "asc",
+                "genero" => "vinilos.generosfk"
+            ];
+            if(isset($_GET["field"])) {
+                $params["field"] = $_GET["field"];
+            }
+            if(isset($_GET["order"]) ) {
+                $params["order"] = $_GET["order"];
+            }  
+            if(isset($_GET["genero"]) ) {
+                $params["genero"] = $_GET["genero"];
+            }  
+        $vinilos = $this->model->getVinilos($params);
         $this->view->response($vinilos);
         }
 
-        function getVinilosAsc($params = null){
-            $vinilos = $this->model->getVinilosAsc();
-            $this->view->response($vinilos);
-            }
-
-      function getVinilosById($params = null ){
+      function getVinilosById($params = null) {
         // obtengo el id del arreglo de params
         $id = $params[':ID'];
         $vinilos = $this->model->getVinilosById($id);
