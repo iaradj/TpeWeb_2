@@ -6,7 +6,7 @@ Para utilizar la base de datos, se debe importar el archivo que se encuentra den
 Para visualizar, se debe utilizar el siguiente url dentro del Postman:
 http://localhost/tpe-web2/vinilos
 
--Si se quiere ordenar, filtrar, limitar o paginar los vinilos al lado de 'vinilos' se debe poner '?' y poner a su vez una de las 5 opciones:
+-Si se quiere ordenar, filtrar, limitar o paginar los vinilos al lado de 'vinilos' se debe poner '?' y poner a su vez una de las 5 opciones, se agregaron parámetros de consulta a la solicitud GET:
 
 Filtrar: 
 
@@ -29,7 +29,15 @@ Paginar:
 
 Se debe poner un & para separar cada una de las opciones.
 
+METODO POST:
 
+Para insertar un vinilo nuevo debe ingresar la informacion en formato JSON de la siguiente manera: 
+{ "vinilo": "viniloejemplo", 
+"artista": "artistaejemplo", 
+"precio": 11111, 
+"lanzamiento": 2022, 
+"generosfk": 1
+}
 
 
 
